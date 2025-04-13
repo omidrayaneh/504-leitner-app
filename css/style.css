@@ -1,0 +1,364 @@
+@font-face {
+    font-family: 'Vazir';
+    src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v27.2.2/dist/Vazir-Regular.woff2') format('woff2');
+}
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Vazir', Tahoma, Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background-color: #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+main {
+    flex: 1;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+select, button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Vazir', Tahoma, Arial, sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+select {
+    background-color: white;
+    border: 1px solid #ddd;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+#reset-btn {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.flashcard-container {
+    perspective: 1000px;
+    margin: 20px 0;
+    height: 300px;
+}
+
+.flashcard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+}
+
+.flashcard.flipped {
+    transform: rotateY(180deg);
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform-style: preserve-3d;
+}
+
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+    background-color: var(--light-color);
+}
+
+.word-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.synonyms {
+    color: var(--primary-color);
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.difficulty-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+}
+
+.difficulty-hard { background: var(--danger-color); color: white; }
+.difficulty-medium { background: var(--warning-color); color: white; }
+.difficulty-easy { background: var(--success-color); color: white; }
+
+#word-text {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.pronunciation {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+#meaning {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--dark-color);
+}
+
+.example {
+    font-style: italic;
+    color: #555;
+    line-height: 1.6;
+    text-align: right;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.nav-btn {
+    background-color: var(--primary-color);
+    color: white;
+    width: 80px;
+}
+
+.rating-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.rating-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.hard {
+    background-color: var(--danger-color);
+}
+
+.medium {
+    background-color: var(--warning-color);
+}
+
+.easy {
+    background-color: var(--success-color);
+}
+
+
+
+
+
+
+
+.stats-container {
+    background: white;
+    padding: 15px;
+
+
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.box-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.stat-item {
+
+
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.stat-label {
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px 0;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: column;
+    }
+    
+    select {
+        margin-bottom: 10px;
+        margin-left: 0;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .nav-btn {
+        width: 100%;
+    }
+    
+    .rating-buttons {
+        width: 100%;
+    }
+    
+    .rating-btn {
+        flex: 1;
+    }
+    
+    .stat-item {
+        flex-basis: 48%;
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.help-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.statistics {
+    margin: 20px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}

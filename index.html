@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لایتنر 504 - حفظ لغات انگلیسی</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3498db">
+    <link rel="icon" href="https://img.icons8.com/color/192/dictionary.png">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/color/192/dictionary.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>لایتنر 504 - حفظ لغات انگلیسی</h1>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </header>
+
+        <main>
+            <div class="controls">
+                <select id="box-select">
+                    <option value="all">همه لغات</option>
+                    <option value="1">جعبه 1 (روزانه)</option>
+                    <option value="2">جعبه 2 (هر 2 روز)</option>
+                    <option value="3">جعبه 3 (هر هفته)</option>
+                    <option value="4">جعبه 4 (هر 2 هفته)</option>
+                    <option value="5">جعبه 5 (ماهانه)</option>
+                    <option value="learned">لغات آموخته شده</option>
+                </select>
+                <button id="reset-btn">شروع مجدد</button>
+            </div>
+
+            <div class="flashcard-container">
+                <div class="flashcard" id="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <h2 id="word-text">کلیک کنید</h2>
+                            <p id="pronunciation" class="pronunciation"></p>
+                        </div>
+                        <div class="flashcard-back">
+                            <h3 id="meaning"></h3>
+                            <p id="example" class="example"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button id="prev-btn" class="nav-btn">قبلی</button>
+                <div class="rating-buttons">
+                    <button id="hard-btn" class="rating-btn hard">سخت</button>
+                    <button id="medium-btn" class="rating-btn medium">متوسط</button>
+                    <button id="easy-btn" class="rating-btn easy">آسان</button>
+                </div>
+                <button id="next-btn" class="nav-btn">بعدی</button>
+            </div>
+
+
+
+
+
+            <div class="stats-container">
+                <div class="box-stats">
+                    <div class="stat-item">
+                        <span>جعبه 1:</span>
+                        <span id="box1-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>جعبه 2:</span>
+                        <span id="box2-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>جعبه 3:</span>
+                        <span id="box3-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>جعبه 4:</span>
+                        <span id="box4-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>جعبه 5:</span>
+                        <span id="box5-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>یادگرفته شده:</span>
+                        <span id="learned-count">0</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>طراحی شده با ❤️ | روش لایتنر برای یادگیری موثر لغات</p>
+        </footer>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // ثبت سرویس ورکر برای PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('Service Worker registered', reg))
+                .catch(err => console.log('Service Worker registration failed', err));
+        }
+    </script>
+</body>
+</html>
